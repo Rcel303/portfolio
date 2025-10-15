@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Portfolio | Rcel</title>
+    <style>
+      body {
+        background: linear-gradient(to bottom, #f9f5ff, #ffffff);
+      }
+
+      .section__container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 6rem 1rem 3rem;
+        text-align: center;
+        position: relative;
+      }
+
+      .section__container::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: var(--primary-color);
+        margin: 1.5rem auto 0;
+        border-radius: 4px;
+      }
+
+      .portfolio__grid {
+        display: flex;
+        gap: 2rem;
+        margin-top: 3rem;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-color) transparent;
+      }
+
+      .portfolio__grid::-webkit-scrollbar {
+        height: 6px;
+      }
+
+      .portfolio__grid::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+        border-radius: 4px;
+      }
+
+      .portfolio__grid::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .portfolio__item {
+        flex: 0 0 300px;
+        background-color: #fff;
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        scroll-snap-align: start;
+      }
+
+      .portfolio__item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      .portfolio__item img {
+        width: 100%;
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        object-fit: cover;
+        height: 180px;
+        cursor: pointer;
+      }
+
+      .portfolio__item h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+      }
+
+      .portfolio__item p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.85);
+      }
+
+      .modal__content {
+        display: block;
+        margin: 5% auto;
+        max-width: 80%;
+        border-radius: 12px;
+        max-height: 80vh;
+      }
+
+      .modal__caption {
+        text-align: center;
+        color: #fff;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+      }
+
+      .modal__close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: #fff;
+        font-size: 2rem;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .modal__close:hover {
+        color: var(--primary-color);
+      }
+
+      @media (max-width: 600px) {
+        .portfolio__item {
+          flex: 0 0 260px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__content">
+        <div class="logo"><a href="#">Rcel</a></div>
+        <label for="check" class="checkbox">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" name="check" id="check" />
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#" style="color: var(--primary-color); border-bottom: 2px solid var(--primary-color);">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="section">
+      <div class="section__container">
+        <p class="subtitle">PORTFOLIO</p>
+        <h1 class="title">My <span>Recent</span> Projects</h1>
+        <p class="description">
+          Here are a few of my favorite projects I've built. Each project reflects my dedication to clean design and efficient development.
+        </p>
+
+        <div class="portfolio__grid">
+          <div class="portfolio__item">
+            <img src="assets/trackxi.png" alt="TrackXi" onclick="openModal(this)" />
+            <h3>TrackXi</h3>
+            <p>A smart taxi fare system ensuring transparent, accurate, and user-friendly fare calculation for passengers.</p>
+          </div>
+
+          <div class="portfolio__item">
+            <img src="assets/crymton.png" alt="CRYMTON Comtech Website" onclick="openModal(this)" />
+            <h3>CRYMTON Comtech Website</h3>
+            <p>A tech solutions site offering smart, secure, and efficient systems for businesses, institutions, and homes.</p>
+          </div>
+
+          <div class="portfolio__item">
+            <img src="assets/qr.png" alt="QR Attendance System" onclick="openModal(this)" />
+            <h3>QR Attendance System</h3>
+            <p>A web-based solution using QR scanning to automate attendance tracking in real-time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal HTML -->
+    <div id="modal" class="modal">
+      <span class="modal__close" onclick="closeModal()">&times;</span>
+      <img class="modal__content" id="modalImg" />
+      <div class="modal__caption" id="modalCaption"></div>
+    </div>
+
+    <script>
+      function openModal(img) {
+        const modal = document.getElementById("modal");
+        const modalImg = document.getElementById("modalImg");
+        const caption = document.getElementById("modalCaption");
+
+        modal.style.display = "block";
+        modalImg.src = img.src;
+        caption.innerText = img.alt;
+      }
+
+      function closeModal() {
+        document.getElementById("modal").style.display = "none";
+      }
+
+      window.onclick = function (e) {
+        const modal = document.getElementById("modal");
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>

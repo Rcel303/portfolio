@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Rcel | Web Developer Portfolio</title>
+    <style>
+      .highlight {
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 0.2rem 0.6rem;
+        border-radius: 5px;
+      }
+
+      .socials {
+        margin-top: 1.5rem;
+        display: flex;
+        gap: 1rem;
+      }
+
+      .socials a {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        transition: 0.3s;
+      }
+
+      .socials a:hover {
+        color: var(--primary-color-dark);
+      }
+
+      .section__container::after {
+        content: "";
+        position: absolute;
+        bottom: -2rem;
+        left: 0;
+        height: 4px;
+        width: 80px;
+        background-color: var(--primary-color);
+        border-radius: 4px;
+      }
+
+      .section__container {
+        position: relative;
+      }
+
+      @media (max-width: 750px) {
+        .socials {
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__content">
+        <div class="logo"><a href="#">Rcel</a></div>
+        <label for="check" class="checkbox">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" name="check" id="check" />
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="section">
+      <div class="section__container">
+        <div class="content">
+          <p class="subtitle">HELLO</p>
+          <h1 class="title">
+            I'm <span class="highlight">Rcel</span><br />a Web Developer
+          </h1>
+          <p class="description">
+            Welcome to my web developer portfolio! I'm Rcel, a skilled and
+            creative web developer with a passion for crafting beautiful,
+            responsive, and user-friendly websites. From personal blogs to
+            e-commerce platforms, I build solutions that work.
+          </p>
+          <div class="action__btns">
+            <button class="hire__me" onclick="location.href='contact.html'">Hire Me</button>
+            <button class="portfolio" onclick="location.href='portfolio.html'">Portfolio</button>
+          </div>
+
+          <div class="socials">
+            <a href="https://github.com/Rcel303?tab=repositories/" target="_blank"><i class="ri-github-fill"></i></a>
+            <a href="https://www.linkedin.com/in/rcel-balmes-576183205//" target="_blank"><i class="ri-linkedin-box-fill"></i></a>
+            <a href="mailto:rcelbalmes08@gmail.com"><i class="ri-mail-fill"></i></a>
+          </div>
+        </div>
+        <div class="image">
+          <img src="assets/prof.jpg" alt="Rcel Profile" />
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

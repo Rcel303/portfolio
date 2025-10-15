@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>About | Rcel</title>
+    <style>
+      .about__details {
+        margin-top: 1.5rem;
+        color: var(--text-dark);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .about__details span {
+        display: inline-block;
+        font-weight: 600;
+        margin-right: 0.5rem;
+        color: var(--primary-color);
+      }
+
+      .section__container::after {
+        content: "";
+        position: absolute;
+        bottom: -2rem;
+        left: 0;
+        height: 4px;
+        width: 80px;
+        background-color: var(--primary-color);
+        border-radius: 4px;
+      }
+
+      .section__container {
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__content">
+        <div class="logo"><a href="#">Rcel</a></div>
+        <label for="check" class="checkbox">
+          <i class="ri-menu-line"></i>
+        </label>
+        <input type="checkbox" name="check" id="check" />
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#" style="color: var(--primary-color); border-bottom: 2px solid var(--primary-color);">About</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="section">
+      <div class="section__container">
+        <div class="image">
+          <img src="assets/prof1.jpg" alt="Profile" />
+        </div>
+        <div class="content">
+          <p class="subtitle">ABOUT ME</p>
+          <h1 class="title">
+            I'm <span>Rcel</span><br />a Web Developer
+          </h1>
+          <p class="description">
+            I am a dedicated and innovative web developer with a love for
+            designing clean and functional websites. With a strong grasp of
+            modern web technologies and a creative approach to solving problems,
+            I strive to deliver projects that are not only visually appealing but
+            also user-centered.
+          </p>
+
+          <div class="about__details">
+            <p><span>Name:</span> Rcel Balmes</p>
+            <p><span>Email:</span> rcelbalmes08@gmail.com</p>
+            <p><span>Skills:</span> HTML, CSS, JavaScript, PHP, MySQL</p>
+            <p><span>Education:</span> Bachelor of Science in Information Technology</p>
+          </div>
+
+          <div class="action__btns">
+            <button class="hire__me" onclick="location.href='contact.html'">Hire Me</button>
+            <button class="portfolio" onclick="location.href='portfolio.html'">Portfolio</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
