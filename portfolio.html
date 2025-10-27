@@ -8,19 +8,13 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="styles.css" />
     <title>Portfolio | Rcel</title>
     <style>
       :root {
-        --primary-color: #a855f7; /* updated accent color */
+        --primary-color: #a855f7;
         --text-dark: #333;
         --text-light: #666;
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
       }
 
       body {
@@ -29,90 +23,9 @@
         scroll-behavior: smooth;
       }
 
-      /* ------------- NAVBAR ------------- */
-      nav {
-        width: 100%;
-        background-color: #fff;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1000;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-      }
-
-      .nav__content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 2rem;
-        max-width: 1200px;
-        margin: auto;
-      }
-
-      .logo a {
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 1.6rem;
-        color: var(--primary-color);
-      }
-
-      .checkbox {
-        display: none;
-      }
-
-      ul {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-      }
-
-      ul li a {
-        text-decoration: none;
-        color: var(--text-dark);
-        font-weight: 500;
-        transition: color 0.3s ease;
-      }
-
-      ul li a:hover {
-        color: var(--primary-color);
-      }
-
-      input[type="checkbox"] {
-        display: none;
-      }
-
-      @media (max-width: 768px) {
-        .checkbox {
-          display: block;
-          cursor: pointer;
-          font-size: 1.6rem;
-        }
-
-        ul {
-          position: absolute;
-          top: 70px;
-          left: -100%;
-          width: 100%;
-          background-color: #fff;
-          flex-direction: column;
-          align-items: center;
-          transition: 0.4s ease;
-          padding: 1rem 0;
-          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-        }
-
-        input[type="checkbox"]:checked ~ ul {
-          left: 0;
-        }
-
-        ul li {
-          padding: 1rem 0;
-        }
-      }
-
-      /* ------------- SECTION ------------- */
+      /* ---------- SECTION ---------- */
       .section {
-        padding-top: 6rem;
+        padding-top: 7rem;
       }
 
       .section__container {
@@ -160,7 +73,7 @@
         border-radius: 4px;
       }
 
-      /* ------------- PORTFOLIO GRID ------------- */
+      /* ---------- PORTFOLIO GRID ---------- */
       .portfolio__grid {
         display: flex;
         gap: 2rem;
@@ -224,7 +137,7 @@
         line-height: 1.5;
       }
 
-      /* ------------- MODAL ------------- */
+      /* ---------- MODAL ---------- */
       .modal {
         display: none;
         position: fixed;
@@ -292,6 +205,7 @@
   </head>
 
   <body>
+    <!-- ✅ Navbar from styles.css -->
     <nav>
       <div class="nav__content">
         <div class="logo"><a href="#">Rcel</a></div>
@@ -303,14 +217,7 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li>
-            <a
-              href="#"
-              style="
-                color: var(--primary-color);
-                border-bottom: 2px solid var(--primary-color);
-              "
-              >Portfolio</a
-            >
+            <a href="#" style="color: var(--primary-color); border-bottom: 2px solid var(--primary-color);">Portfolio</a>
           </li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -392,4 +299,3 @@
     </script>
   </body>
 </html>
-
