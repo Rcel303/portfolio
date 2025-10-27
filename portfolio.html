@@ -8,20 +8,146 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
     <title>Portfolio | Rcel</title>
     <style>
+      :root {
+        --primary-color: #a855f7; /* updated accent color */
+        --text-dark: #333;
+        --text-light: #666;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
       body {
         background: linear-gradient(to bottom, #f9f5ff, #ffffff);
+        color: var(--text-dark);
+        scroll-behavior: smooth;
+      }
+
+      /* ------------- NAVBAR ------------- */
+      nav {
+        width: 100%;
+        background-color: #fff;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .nav__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .logo a {
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.6rem;
+        color: var(--primary-color);
+      }
+
+      .checkbox {
+        display: none;
+      }
+
+      ul {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      ul li a {
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      ul li a:hover {
+        color: var(--primary-color);
+      }
+
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        .checkbox {
+          display: block;
+          cursor: pointer;
+          font-size: 1.6rem;
+        }
+
+        ul {
+          position: absolute;
+          top: 70px;
+          left: -100%;
+          width: 100%;
+          background-color: #fff;
+          flex-direction: column;
+          align-items: center;
+          transition: 0.4s ease;
+          padding: 1rem 0;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="checkbox"]:checked ~ ul {
+          left: 0;
+        }
+
+        ul li {
+          padding: 1rem 0;
+        }
+      }
+
+      /* ------------- SECTION ------------- */
+      .section {
+        padding-top: 6rem;
       }
 
       .section__container {
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         padding: 6rem 1rem 3rem;
         text-align: center;
-        position: relative;
+        max-width: 1100px;
+        margin: auto;
+      }
+
+      .subtitle {
+        font-weight: 600;
+        color: var(--primary-color);
+        letter-spacing: 2px;
+        margin-bottom: 0.5rem;
+      }
+
+      .title {
+        font-size: 2.4rem;
+        margin-bottom: 1rem;
+      }
+
+      .title span {
+        color: var(--primary-color);
+      }
+
+      .description {
+        max-width: 650px;
+        color: var(--text-light);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 3rem;
       }
 
       .section__container::after {
@@ -34,6 +160,7 @@
         border-radius: 4px;
       }
 
+      /* ------------- PORTFOLIO GRID ------------- */
       .portfolio__grid {
         display: flex;
         gap: 2rem;
@@ -54,23 +181,21 @@
         border-radius: 4px;
       }
 
-      .portfolio__grid::-webkit-scrollbar-track {
-        background: transparent;
-      }
-
       .portfolio__item {
         flex: 0 0 300px;
         background-color: #fff;
         border-radius: 16px;
         padding: 1.5rem;
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
         transition: all 0.3s ease;
         scroll-snap-align: start;
+        position: relative;
+        overflow: hidden;
       }
 
       .portfolio__item:hover {
         transform: translateY(-10px);
-        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 15px 30px rgba(168, 85, 247, 0.2);
       }
 
       .portfolio__item img {
@@ -80,6 +205,11 @@
         object-fit: cover;
         height: 180px;
         cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .portfolio__item img:hover {
+        transform: scale(1.05);
       }
 
       .portfolio__item h3 {
@@ -91,9 +221,10 @@
       .portfolio__item p {
         color: var(--text-light);
         font-size: 0.95rem;
-        line-height: 1.4;
+        line-height: 1.5;
       }
 
+      /* ------------- MODAL ------------- */
       .modal {
         display: none;
         position: fixed;
@@ -102,8 +233,19 @@
         top: 0;
         width: 100%;
         height: 100%;
-        overflow: auto;
         background-color: rgba(0, 0, 0, 0.85);
+        justify-content: center;
+        align-items: center;
+        animation: fadeIn 0.3s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
 
       .modal__content {
@@ -112,6 +254,7 @@
         max-width: 80%;
         border-radius: 12px;
         max-height: 80vh;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
       }
 
       .modal__caption {
@@ -129,6 +272,7 @@
         font-size: 2rem;
         font-weight: bold;
         cursor: pointer;
+        transition: color 0.3s ease;
       }
 
       .modal__close:hover {
@@ -139,9 +283,14 @@
         .portfolio__item {
           flex: 0 0 260px;
         }
+
+        .title {
+          font-size: 2rem;
+        }
       }
     </style>
   </head>
+
   <body>
     <nav>
       <div class="nav__content">
@@ -153,7 +302,16 @@
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
-          <li><a href="#" style="color: var(--primary-color); border-bottom: 2px solid var(--primary-color);">Portfolio</a></li>
+          <li>
+            <a
+              href="#"
+              style="
+                color: var(--primary-color);
+                border-bottom: 2px solid var(--primary-color);
+              "
+              >Portfolio</a
+            >
+          </li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
@@ -169,27 +327,41 @@
 
         <div class="portfolio__grid">
           <div class="portfolio__item">
-            <img src="trackxi.png" alt="TrackXi" onclick="openModal(this)" />
+            <img src="assets/trackxi.png" alt="TrackXi" onclick="openModal(this)" />
             <h3>TrackXi</h3>
-            <p>A smart taxi fare system ensuring transparent, accurate, and user-friendly fare calculation for passengers.</p>
+            <p>
+              A smart taxi fare system built with PHP for my internship — ensuring transparent, accurate, and user-friendly fare calculation for passengers.
+            </p>
           </div>
 
           <div class="portfolio__item">
-            <img src="crymton.png" alt="CRYMTON Comtech Website" onclick="openModal(this)" />
+            <img src="assets/crymton.png" alt="CRYMTON Comtech Website" onclick="openModal(this)" />
             <h3>CRYMTON Comtech Website</h3>
-            <p>A tech solutions site offering smart, secure, and efficient systems for businesses, institutions, and homes.</p>
+            <p>
+              A PHP-powered tech solutions site created for my internship — delivering smart, secure, and efficient systems for businesses, institutions, and homes.
+            </p>
           </div>
 
           <div class="portfolio__item">
-            <img src="qr.png" alt="QR Attendance System" onclick="openModal(this)" />
+            <img src="assets/qr.png" alt="QR Attendance System" onclick="openModal(this)" />
             <h3>QR Attendance System</h3>
-            <p>A web-based solution using QR scanning to automate attendance tracking in real-time.</p>
+            <p>
+              A PHP and JavaScript-powered web solution using QR scanning for real-time, automated attendance tracking.
+            </p>
+          </div>
+
+          <div class="portfolio__item">
+            <img src="assets/book.png" alt="Book System Management" onclick="openModal(this)" />
+            <h3>Book System Management</h3>
+            <p>
+              A web-based Book Management System built with Python Django for efficient cataloging, tracking, and management of books.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Modal HTML -->
+    <!-- Modal -->
     <div id="modal" class="modal">
       <span class="modal__close" onclick="closeModal()">&times;</span>
       <img class="modal__content" id="modalImg" />
@@ -202,7 +374,7 @@
         const modalImg = document.getElementById("modalImg");
         const caption = document.getElementById("modalCaption");
 
-        modal.style.display = "block";
+        modal.style.display = "flex";
         modalImg.src = img.src;
         caption.innerText = img.alt;
       }
@@ -220,4 +392,3 @@
     </script>
   </body>
 </html>
-
